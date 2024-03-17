@@ -23,14 +23,15 @@ namespace BaseMisc
         public static void RegisterJukebox()
         {
             CustomPrefab jukeboxPrefab = new CustomPrefab("jukebox", "Jukebox", "Controls the music that is played out your speakers", SpriteManager.Get(TechType.Seamoth));
-            jukeboxPrefab.SetGameObject(GetJukeboxPrefab("jukebox", Loading.TheAssetBundle.LoadAsset<GameObject>("Jukebox")));
 
             techType = jukeboxPrefab.Info.TechType;
+
+            jukeboxPrefab.SetGameObject(GetJukeboxPrefab("jukebox", Loading.TheAssetBundle.LoadAsset<GameObject>("Jukebox")));
 
             RecipeData jukerboxRecipe = new RecipeData
             {
                 craftAmount = 1,
-                Ingredients =
+                Ingredients = new List<CraftData.Ingredient>()
                 {
                     new Ingredient(TechType.Titanium, 1)
                 },
