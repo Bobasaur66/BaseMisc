@@ -50,7 +50,7 @@ namespace BaseMisc
         {
             PrefabUtils.AddBasicComponents(jukeboxPrefabGO, classID, techType, LargeWorldEntity.CellLevel.Near);
 
-            float scale = 1f;
+            float scale = .6f;
             jukeboxPrefabGO.transform.localScale = new Vector3(scale, scale, scale);
 
             GameObject model = jukeboxPrefabGO.transform.Find("JukeboxModel").gameObject;
@@ -71,7 +71,7 @@ namespace BaseMisc
 
             PrefabUtils.AddConstructable(jukeboxPrefabGO, techType, flags, model);
 
-
+            MaterialUtils.ApplySNShaders(model, 4f, 1f, 1f);
 
             return jukeboxPrefabGO;
         }
