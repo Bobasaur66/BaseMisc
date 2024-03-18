@@ -15,21 +15,21 @@ using static GameObjectPoolPrefabMap;
 using static HandReticle;
 using static Nautilus.Assets.PrefabTemplates.FabricatorTemplate;
 
-namespace BaseMisc
+namespace BaseMisc.Music
 {
     public class Jukebox
     {
-        public static TechType techType;
+        public static TechType jukeboxTechType;
 
         public static void RegisterJukebox()
         {
             CustomPrefab jukeboxPrefab = new CustomPrefab("jukebox", "Jukebox", "Controls the music that is played out your speakers", SpriteManager.Get(TechType.Seamoth));
 
-            techType = jukeboxPrefab.Info.TechType;
+            jukeboxTechType = jukeboxPrefab.Info.TechType;
 
             jukeboxPrefab.SetGameObject(GetJukeboxPrefab("jukebox", Loading.TheAssetBundle.LoadAsset<GameObject>("Jukebox")));
 
-            RecipeData jukerboxRecipe = new RecipeData
+            RecipeData jukeboxRecipe = new RecipeData
             {
                 craftAmount = 1,
                 Ingredients = new List<CraftData.Ingredient>()
@@ -38,7 +38,7 @@ namespace BaseMisc
                 },
             };
 
-            jukeboxPrefab.SetRecipe(jukerboxRecipe).WithCraftingTime(3f);
+            jukeboxPrefab.SetRecipe(jukeboxRecipe).WithCraftingTime(3f);
 
             jukeboxPrefab.SetUnlock(TechType.AdvancedWiringKit);
 
@@ -49,7 +49,7 @@ namespace BaseMisc
 
         private static GameObject GetJukeboxPrefab(string classID, GameObject jukeboxPrefabGO)
         {
-            PrefabUtils.AddBasicComponents(jukeboxPrefabGO, classID, techType, LargeWorldEntity.CellLevel.Near);
+            PrefabUtils.AddBasicComponents(jukeboxPrefabGO, classID, jukeboxTechType, LargeWorldEntity.CellLevel.Near);
 
             float scale = .6f;
             jukeboxPrefabGO.transform.localScale = new Vector3(scale, scale, scale);
@@ -57,7 +57,7 @@ namespace BaseMisc
             GameObject model = jukeboxPrefabGO.transform.Find("JukeboxModel").gameObject;
 
             Constructable constructable = jukeboxPrefabGO.EnsureComponent<Constructable>();
-            constructable.techType = techType;
+            constructable.techType = jukeboxTechType;
             constructable.model = model;
             constructable.allowedOnWall = true;
             constructable.allowedOnGround = false;
@@ -70,16 +70,17 @@ namespace BaseMisc
             ConstructableFlags flags = ConstructableFlags.Wall | ConstructableFlags.Base | ConstructableFlags.Inside |
             ConstructableFlags.Submarine;
 
-            PrefabUtils.AddConstructable(jukeboxPrefabGO, techType, flags, model);
+            PrefabUtils.AddConstructable(jukeboxPrefabGO, jukeboxTechType, flags, model);
 
             MaterialUtils.ApplySNShaders(model, 4f, 1f, 1f);
 
-            jukeboxPrefabGO.FindChild("Canvas/ButtonTypeDefault").GetComponent<Button>().onClick.AddListener(MusicController.ChangeMusicTypeToDefault);
-            jukeboxPrefabGO.FindChild("Canvas/ButtonTypeCustom").GetComponent<Button>().onClick.AddListener(MusicController.ChangeMusicTypeToCustom);
-            jukeboxPrefabGO.FindChild("Canvas/ButtonStop").GetComponent<Button>().onClick.AddListener(MusicController.StopMusic);
-            jukeboxPrefabGO.FindChild("Canvas/ButtonPlay").GetComponent<Button>().onClick.AddListener(MusicController.StartMusic);
-            jukeboxPrefabGO.FindChild("Canvas/ButtonSkip").GetComponent<Button>().onClick.AddListener(MusicController.ForwardMusic);
-            jukeboxPrefabGO.FindChild("Canvas/ButtonBack").GetComponent<Button>().onClick.AddListener(MusicController.BackMusic);
+
+            jukeboxPrefabGO.transform.Find("Canvas/ButtonTypeDefault").GetComponent<Button>().onClick.AddListener(MusicController.ChangeMusicTypeToDefault);
+            jukeboxPrefabGO.transform.Find("Canvas/ButtonTypeCustom").GetComponent<Button>().onClick.AddListener(MusicController.ChangeMusicTypeToCustom);
+            jukeboxPrefabGO.transform.Find("Canvas/ButtonStop").GetComponent<Button>().onClick.AddListener(MusicController.StopMusic);
+            jukeboxPrefabGO.transform.Find("Canvas/ButtonPlay").GetComponent<Button>().onClick.AddListener(MusicController.StartMusic);
+            jukeboxPrefabGO.transform.Find("Canvas/ButtonSkip").GetComponent<Button>().onClick.AddListener(MusicController.ForwardMusic);
+            jukeboxPrefabGO.transform.Find("Canvas/ButtonBack").GetComponent<Button>().onClick.AddListener(MusicController.BackMusic);
 
             return jukeboxPrefabGO;
         }

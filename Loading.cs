@@ -1,4 +1,5 @@
-﻿using Nautilus.Utility;
+﻿using BaseMisc.Music;
+using Nautilus.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace BaseMisc
         {
             Jukebox.RegisterJukebox();
 
-
+            Speaker.RegisterSpeaker();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace BaseMisc
+namespace BaseMisc.Music
 {
     public class MusicController
     {
