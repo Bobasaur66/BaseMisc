@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 using static CraftData;
 using static GameObjectPoolPrefabMap;
 using static HandReticle;
@@ -72,6 +73,13 @@ namespace BaseMisc
             PrefabUtils.AddConstructable(jukeboxPrefabGO, techType, flags, model);
 
             MaterialUtils.ApplySNShaders(model, 4f, 1f, 1f);
+
+            jukeboxPrefabGO.FindChild("Canvas/ButtonTypeDefault").GetComponent<Button>().onClick.AddListener(MusicController.ChangeMusicTypeToDefault);
+            jukeboxPrefabGO.FindChild("Canvas/ButtonTypeCustom").GetComponent<Button>().onClick.AddListener(MusicController.ChangeMusicTypeToCustom);
+            jukeboxPrefabGO.FindChild("Canvas/ButtonStop").GetComponent<Button>().onClick.AddListener(MusicController.StopMusic);
+            jukeboxPrefabGO.FindChild("Canvas/ButtonPlay").GetComponent<Button>().onClick.AddListener(MusicController.StartMusic);
+            jukeboxPrefabGO.FindChild("Canvas/ButtonSkip").GetComponent<Button>().onClick.AddListener(MusicController.ForwardMusic);
+            jukeboxPrefabGO.FindChild("Canvas/ButtonBack").GetComponent<Button>().onClick.AddListener(MusicController.BackMusic);
 
             return jukeboxPrefabGO;
         }
