@@ -76,12 +76,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseMiscLogger.cs" />
+    <Compile Include="Beds\BedBase.cs" />
+    <Compile Include="Beds\BlueBed.cs" />
     <Compile Include="Loading.cs" />
     <Compile Include="BaseMiscPlugin.cs" />
-    <Compile Include="Music\Jukebox.cs" />
     <Compile Include="Logger.cs" />
-    <Compile Include="Music\MusicController.cs" />
-    <Compile Include="Music\Speaker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

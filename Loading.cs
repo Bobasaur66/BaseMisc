@@ -1,4 +1,4 @@
-﻿using BaseMisc.Music;
+﻿using BaseMisc.Beds;
 using Nautilus.Utility;
 using System;
 using System.Collections.Generic;
@@ -23,9 +23,9 @@ namespace BaseMisc
 
         public static void RegisterAllPrefabs()
         {
-            Jukebox.RegisterJukebox();
+            BlueBed.Register();
 
-            Speaker.RegisterSpeaker();
+
         }
     }
 }
