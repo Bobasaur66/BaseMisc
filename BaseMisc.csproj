@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseMiscLogger.cs" />
+    <Compile Include="Bathroom\Shower.cs" />
     <Compile Include="Beds\BedBase.cs" />
     <Compile Include="Beds\BlueBed.cs" />
     <Compile Include="Loading.cs" />

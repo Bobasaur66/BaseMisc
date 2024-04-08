@@ -1,4 +1,5 @@
-﻿using BaseMisc.Beds;
+﻿using BaseMisc.Bathroom;
+using BaseMisc.Beds;
 using Nautilus.Utility;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace BaseMisc
         {
             BlueBed.Register();
 
-
+            Shower.Register();
         }
     }
 }

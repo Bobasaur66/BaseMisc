@@ -17,12 +17,9 @@ namespace BaseMisc.Beds
 
         public static void Register()
         {
-            CustomPrefab blueBedPrefab = new CustomPrefab("blueBed", "Blue Bed", "A nice cosy bed to relax in", SpriteManager.Get(TechType.Exosuit));
+            CustomPrefab blueBedPrefab = new CustomPrefab("blueBed", "Blue Bed", "A nice cosy bed spend the night in", SpriteManager.Get(TechType.Exosuit));
 
             techType = blueBedPrefab.Info.TechType;
-
-            BaseMiscLogger.Log(techType.ToString());
-            BaseMiscLogger.Log(Loading.TheAssetBundle.LoadAsset<GameObject>("BlueBed").ToString());
 
             blueBedPrefab.SetGameObject(BedBase.GetBedGameobject("blueBed", Loading.TheAssetBundle.LoadAsset<GameObject>("BlueBed"), techType));
 

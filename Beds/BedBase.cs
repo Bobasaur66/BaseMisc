@@ -24,10 +24,6 @@ namespace BaseMisc.Beds
 
             GameObject model = bedPrefabGO.transform.Find("LargeBed/Model").gameObject;
 
-            Constructable constructable = bedPrefabGO.EnsureComponent<Constructable>();
-            constructable.techType = techType;
-            constructable.ghostMaterial = MaterialUtils.GhostMaterial;
-
             MaterialUtils.ApplySNShaders(model, 1f, 1f, 1f);
 
             return bedPrefabGO;
