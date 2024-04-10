@@ -29,8 +29,8 @@ namespace BaseMisc.Bathroom
                 craftAmount = 1,
                 Ingredients = new List<CraftData.Ingredient>()
                 {
-                    new Ingredient(TechType.Titanium, 2),
-                    new Ingredient(TechType.Glass, 1),
+                    new Ingredient(TechType.Titanium, 1),
+                    new Ingredient(TechType.Glass, 2),
                     new Ingredient(TechType.Pipe, 1)
                 },
             };
@@ -53,7 +53,7 @@ namespace BaseMisc.Bathroom
 
             GameObject model = prefabGO.transform.Find("ShowerModel").gameObject;
 
-            MaterialUtils.ApplySNShaders(model, 1f, 1f, 1f);
+            MaterialUtils.ApplySNShaders(model, 4f, 1f, 1f);
 
             return prefabGO;
         }

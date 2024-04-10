@@ -10,21 +10,24 @@ using static CraftData;
 using UnityEngine;
 using static HandReticle;
 using Nautilus.Assets.Gadgets;
+using Nautilus.Assets.PrefabTemplates;
 
 namespace BaseMisc.Beds
 {
     public class BedBase
     {
-        public static GameObject GetBedGameobject(string classID, GameObject bedPrefabGO, TechType techType)
+        public static GameObject GetBedGameobject(string classID, GameObject bedPrefabGO, TechType techType, PrefabInfo info)
         {
             PrefabUtils.AddBasicComponents(bedPrefabGO, classID, techType, LargeWorldEntity.CellLevel.Near);
             
             float scale = 1f;
             bedPrefabGO.transform.localScale = new Vector3(scale, scale, scale);
 
-            GameObject model = bedPrefabGO.transform.Find("LargeBed/Model").gameObject;
+            GameObject model = bedPrefabGO.transform.Find("LargeBed/BedModel").gameObject;
 
             MaterialUtils.ApplySNShaders(model, 1f, 1f, 1f);
+
+            bedPrefabGO.transform.Find("LargeBed").GetComponent<Animator>().runtimeAnimatorController = 
 
             return bedPrefabGO;
         }
