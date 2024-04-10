@@ -24,9 +24,12 @@ namespace BaseMisc
 
         public static void RegisterAllPrefabs()
         {
+            // Beds
             BlueBed.Register();
 
+            // Bathroom stuff
             Shower.Register();
+            Sink.Register();
         }
     }
 }

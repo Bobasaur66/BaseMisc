@@ -27,7 +27,7 @@ namespace BaseMisc.Beds
 
             MaterialUtils.ApplySNShaders(model, 1f, 1f, 1f);
 
-            bedPrefabGO.transform.Find("LargeBed").GetComponent<Animator>().runtimeAnimatorController = 
+            //bedPrefabGO.transform.Find("LargeBed").GetComponent<Animator>().runtimeAnimatorController = largeBed.GetComponentInChildren<Animator>().runtimeAnimatorController;
 
             return bedPrefabGO;
         }
