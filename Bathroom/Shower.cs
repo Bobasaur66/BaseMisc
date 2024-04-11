@@ -18,7 +18,7 @@ namespace BaseMisc.Bathroom
 
         public static void Register()
         {
-            CustomPrefab showerPrefab = new CustomPrefab("shower", "Shower", "A compact luxurious shower to wash off all the day's worries", SpriteManager.Get(TechType.Exosuit));
+            CustomPrefab showerPrefab = new CustomPrefab("shower", "Shower", "A compact luxurious shower to wash off all the day's worries", SpriteManager.Get(TechType.BigFilteredWater));
 
             techType = showerPrefab.Info.TechType;
 
@@ -53,7 +53,7 @@ namespace BaseMisc.Bathroom
 
             GameObject model = prefabGO.transform.Find("ShowerModel").gameObject;
 
-            MaterialUtils.ApplySNShaders(model, 4f, 1f, 1f);
+            MaterialUtils.ApplySNShaders(model, 10f, 1f, 1f);
 
             return prefabGO;
         }

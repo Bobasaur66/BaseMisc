@@ -21,7 +21,7 @@ namespace BaseMisc.Beds
 
             techType = blueBedPrefab.Info.TechType;
 
-            blueBedPrefab.SetGameObject(BedBase.GetBedGameobject("blueBed", Loading.TheAssetBundle.LoadAsset<GameObject>("BlueBed"), techType, blueBedPrefab.Info));
+            blueBedPrefab.SetGameObject(obj => BedBase.GetBedGameObjectAsync(Loading.TheAssetBundle.LoadAsset<GameObject>("BlueBed"), "blueBed", techType, obj));
 
             blueBedPrefab = BedBase.GetBedCustomPrefab(blueBedPrefab);
 

@@ -18,12 +18,12 @@ namespace BaseMisc.Bathroom
 
         public static void Register()
         {
-            CustomPrefab sinkPrefab = new CustomPrefab("sink", "Sink", "The ocean isn't enough to clean your hands", SpriteManager.Get(TechType.Exosuit));
+            CustomPrefab sinkPrefab = new CustomPrefab("sink", "Sink", "The ocean isn't enough to clean your hands", SpriteManager.Get(TechType.DisinfectedWater));
 
             techType = sinkPrefab.Info.TechType;
 
             sinkPrefab.SetGameObject(GetSinkGameobject("sink", Loading.TheAssetBundle.LoadAsset<GameObject>("Sink"), techType));
-
+            
             RecipeData sinkRecipe = new RecipeData
             {
                 craftAmount = 1,
@@ -52,7 +52,7 @@ namespace BaseMisc.Bathroom
 
             GameObject model = prefabGO.transform.Find("SinkModel").gameObject;
 
-            MaterialUtils.ApplySNShaders(model, 4f, 1f, 1f);
+            MaterialUtils.ApplySNShaders(model, 10f, 1f, 1f);
 
             return prefabGO;
         }

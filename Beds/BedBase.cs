@@ -11,28 +11,34 @@ using UnityEngine;
 using static HandReticle;
 using Nautilus.Assets.Gadgets;
 using Nautilus.Assets.PrefabTemplates;
+using System.Collections;
+using static Nautilus.Assets.PrefabTemplates.FabricatorTemplate;
 
 namespace BaseMisc.Beds
 {
     public class BedBase
     {
-        public static GameObject GetBedGameobject(string classID, GameObject bedPrefabGO, TechType techType, PrefabInfo info)
+        public static IEnumerator GetBedGameObjectAsync(GameObject bedPrefabGO, string classId, TechType techType, IOut<GameObject> gameObject)
         {
-            PrefabUtils.AddBasicComponents(bedPrefabGO, classID, techType, LargeWorldEntity.CellLevel.Near);
-            
+            PrefabUtils.AddBasicComponents(bedPrefabGO, classId, techType, LargeWorldEntity.CellLevel.Near);
+
             float scale = 1f;
-            bedPrefabGO.transform.localScale = new Vector3(scale, scale, scale);
+            bedPrefabGO.transform.localScale = Vector3.one * scale;
 
-            GameObject model = bedPrefabGO.transform.Find("LargeBed/BedModel").gameObject;
+            MaterialUtils.ApplySNShaders(bedPrefabGO, 1f, 1f, 1f);
 
-            MaterialUtils.ApplySNShaders(model, 1f, 1f, 1f);
+            var task = CraftData.GetPrefabForTechTypeAsync(TechType.Bed2);
+            yield return task;
+            var largeBed = task.GetResult();
 
-            //bedPrefabGO.transform.Find("LargeBed").GetComponent<Animator>().runtimeAnimatorController = largeBed.GetComponentInChildren<Animator>().runtimeAnimatorController;
+            var bedAnimator = bedPrefabGO.transform.Find("LargeBed").GetComponent<Animator>();
+            bedAnimator.runtimeAnimatorController = largeBed.GetComponentInChildren<Animator>().runtimeAnimatorController;
+            bedAnimator.avatar = largeBed.GetComponentInChildren<Animator>().avatar;
 
-            return bedPrefabGO;
+            gameObject.Set(bedPrefabGO);
         }
 
-        public static CustomPrefab GetBedCustomPrefab(CustomPrefab prefab)
+            public static CustomPrefab GetBedCustomPrefab(CustomPrefab prefab)
         {
             RecipeData bedRecipe = new RecipeData
             {
